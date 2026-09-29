@@ -1,0 +1,14 @@
+{
+  "name": "shopnest-mern-stack",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "akash",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+  },
+  "dependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

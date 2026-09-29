@@ -1,0 +1,1 @@
+const coloudinary = require("cloudinary").v2
