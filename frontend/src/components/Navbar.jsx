@@ -1,7 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const cartItems = useSelector((state) => state.cart.cartItem);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <nav className="py-[22px] px-12 sticky z-[100] top-0 shadow-[0_4px_30px_#00000080] backdrop-blur-md  flex flex-col landscape:flex-row items-center justify-between border-[#1b1b21] border-x-0 border border-t-0 bg-[#09090B]">
       <div>
@@ -22,11 +33,29 @@ const Navbar = () => {
           <Link to="/shop">Shop</Link>
         </li>
         <li>
-          <Link to="/cart">Cart (1)</Link>
+          <Link to="/cart">`Cart ${cartItems.length}`</Link>
         </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
+        {user ? (
+          <>
+            <li>
+              <Link to="/profile">Hi, {user.name}</Link>
+            </li>
+            {user.role === "admin" && (
+              <li>
+                <Link to="/admin">Admin</Link>
+              </li>
+            )}
+            <li>
+              <button onClick={handleLogout} className="btn-logout">
+                Logout
+              </button>
+            </li>
+          </>
+        ) : (
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
