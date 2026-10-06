@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  const cartItems = useSelector((state) => state.cart.cartItem);
+  // const cartItems = useSelector((state) => state.cart.cartItem);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -33,7 +33,7 @@ const Navbar = () => {
           <Link to="/shop">Shop</Link>
         </li>
         <li>
-          <Link to="/cart">`Cart ${cartItems.length}`</Link>
+          <Link to="/cart">Cart</Link>
         </li>
         {user ? (
           <>

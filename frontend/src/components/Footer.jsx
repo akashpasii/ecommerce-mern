@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -9,9 +10,9 @@ const Footer = () => {
           <p>Premium E-Commerce Platfrom.</p>
         </div>
         <div className="flex gap-4.5">
-          <p>About Us</p>
-          <p>Return Policy</p>
-          <p>Disclaimer</p>
+          <Link to="/about">About Us</Link>
+          <Link to="/return">Return Police</Link>
+          <Link to="/disclamire">Disclaimer</Link>
         </div>
         <p>© 2026 ShopNest. All rights reserved.</p>
       </div>
